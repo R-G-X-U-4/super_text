@@ -1,0 +1,18 @@
+supertext/
+│
+├── main.py                   # Entry point
+│
+├── windows/
+│   ├── __init__.py
+│   └── main_window.py        # Main TextEdit window
+│
+├── core/
+│   ├── __init__.py
+│   └── file_manager.py       # File saving/loading logic
+│
+├── utils/
+│   ├── __init__.py
+│   └── message_helper.py     # QMessageBox helpers
+│
+└── ui/
+    └── windows.ui             # Qt Designer UI file
