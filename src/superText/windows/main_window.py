@@ -30,6 +30,7 @@ class TextEditWindow(QMainWindow):
         self.checkBox.stateChanged.connect(self.toggle_autosave)
         self.actionBold.triggered.connect(self.make_bold)
         self.actioncolorepicker.triggered.connect(self.colore_packer)
+        self.actionitalic.triggered.connect(self.make_italic)
 
     # ---------------- File Actions ----------------
     def new_file(self):
@@ -87,6 +88,11 @@ class TextEditWindow(QMainWindow):
             fmt = cursore.charFormat()
             fmt.setForeground(colore)
             cursore.mergeCharFormat(fmt)
+    def  make_italic(self):
+        cursore = self.textEdit.textCursor()
+        fmt = cursore.charFormat()
+        fmt.setFontItalic(not fmt.fontItalic())
+        cursore.mergeCharFormat(fmt)
 
 
         
