@@ -17,8 +17,8 @@ class TextEditWindow(QMainWindow):
 
         # Core logic objects
         self.file_manager = FileManager()
-        self.msg_helper = MessageBoxHelper()
         self.current_file = None
+        self.msg_helper = MessageBoxHelper()
         self.autosave_enabled = True
 
         # Connect signals
@@ -43,15 +43,17 @@ class TextEditWindow(QMainWindow):
         self.current_file = None
 
     def save_file(self):
-        content = self.textEdit.toPlainText()
-        file_path = self.current_file
-        self.current_file = self.file_manager.save(content, file_path)
+         html_content = self.textEdit.toHtml()
+         self.current_file = self.file_manager.save(html_content, self.current_file)
 
     def open_file(self):
-        content, path = self.file_manager.open()
-        if content is not None:
-            self.textEdit.setPlainText(content)
-            self.current_file = path
+        result = self.file_manager.open(self)  # self is the parent widget
+        if result:
+            content, file_path = result
+            self.textEdit.setHtml(content)
+            self.current_file = file_path
+
+
 
     # ---------------- Helpers ----------------
     def toggle_autosave(self, state):
