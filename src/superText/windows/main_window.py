@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 from core.file_manager import FileManager
 from utils.message_helper import MessageBoxHelper
+from PyQt5.QtGui import QFont , QColor
+from PyQt5.QtWidgets import QColorDialog
 import os
 
 # Get absolute path of UI file
@@ -26,6 +28,8 @@ class TextEditWindow(QMainWindow):
         self.actionAbout.triggered.connect(self.about)
         self.actionLicense.triggered.connect(self.license_agreement)
         self.checkBox.stateChanged.connect(self.toggle_autosave)
+        self.actionBold.triggered.connect(self.make_bold)
+        self.actioncolorepicker.triggered.connect(self.colore_packer)
 
     # ---------------- File Actions ----------------
     def new_file(self):
@@ -65,3 +69,22 @@ class TextEditWindow(QMainWindow):
 
     def license_agreement(self):
         self.msg_helper.show_license()
+    def make_bold(self):
+        cursore = self.textEdit.textCursor()
+        fmt = cursore.charFormat()
+        if fmt.fontWeight() == QFont.Bold:
+            fmt.setFontWeight(QFont.Normal)
+        else :
+            fmt.setFontWeight(QFont.Bold)
+        cursore.mergeCharFormat(fmt)
+    def colore_packer(self):
+        colore = QColorDialog.getColor()
+
+        if colore.isValid():
+            cursore = self.textEdit.textCursor()
+            fmt = cursore.charFormat()
+            fmt.setForeground(colore)
+            cursore.mergeCharFormat(fmt)
+
+
+        

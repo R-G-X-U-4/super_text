@@ -84,7 +84,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="actionBold"/>
    <addaction name="actionitalic"/>
@@ -158,8 +158,8 @@
   <action name="actionBold">
    <property name="icon">
     <iconset>
-     <normaloff>src/icons/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>
-     <normalon>../../Downloads/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normalon>src/icons/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+     <normaloff>icons/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>
+     <normalon>../../Downloads/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normalon>icons/format_bold_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
    </property>
    <property name="text">
     <string>Bold</string>
@@ -168,7 +168,7 @@
   <action name="actionitalic">
    <property name="icon">
     <iconset>
-     <normaloff>src/icons/format_italic_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>src/icons/format_italic_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+     <normaloff>icons/format_italic_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>icons/format_italic_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
    </property>
    <property name="text">
     <string>italic</string>
@@ -177,7 +177,7 @@
   <action name="actioncolorepicker">
    <property name="icon">
     <iconset>
-     <normaloff>src/icons/colors_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>src/icons/colors_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
+     <normaloff>icons/colors_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</normaloff>icons/colors_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg</iconset>
    </property>
    <property name="text">
     <string>colorepicker</string>
