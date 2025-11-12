@@ -1,9 +1,66 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html><head><meta name="qrichtext" content="1" /><style type="text/css">
-p, li { white-space: pre-wrap; }
-</style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#c8ff00;">                                                             </span></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#c8ff00;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#c8ff00;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#c8ff00;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#c8ff00;">                                             Helllo world</span></p></body></html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+.form-container {
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ccc;
+    width: 90%;
+    margin: auto;
+}
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+input, textarea {
+    width: 95%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+button:hover {
+    background-color: #218838;
+}
+</style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <button type="button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
