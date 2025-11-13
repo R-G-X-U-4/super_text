@@ -87,6 +87,9 @@ class TextEditWindow(QMainWindow):
         
         # Setup keyboard shortcuts for text resizing
         self.setup_resize_shortcuts()
+        
+        # Set initial window title
+        self.update_window_title()
 
     # -------- File Actions ----------------
     def new_file(self):
@@ -98,10 +101,12 @@ class TextEditWindow(QMainWindow):
                 return
         self.textEdit.clear()
         self.current_file = None
+        self.update_window_title()
 
     def save_file(self):
          html_content = self.textEdit.toHtml()
          self.current_file = self.file_manager.save(html_content, self.current_file)
+         self.update_window_title()
 
     def open_file(self):
         result = self.file_manager.open(self)  # self is the parent widget
@@ -109,6 +114,7 @@ class TextEditWindow(QMainWindow):
             content, file_path = result
             self.textEdit.setHtml(content)
             self.current_file = file_path
+            self.update_window_title()
 
 
 
@@ -259,6 +265,15 @@ class TextEditWindow(QMainWindow):
         count = len(text)
         # show a concise message in the status bar
         self.statusbar.showMessage(f"Characters: {count}")
+
+    def update_window_title(self):
+        """Update window title to show current filename."""
+        if self.current_file:
+            # Extract filename from full path
+            filename = os.path.basename(self.current_file)
+            self.setWindowTitle(f"SuperText - {filename}")
+        else:
+            self.setWindowTitle("SuperText - Untitled")
 
 
 
