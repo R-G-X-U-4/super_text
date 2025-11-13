@@ -37,6 +37,16 @@
      <string>Auto Save</string>
     </property>
    </widget>
+   <widget class="QSpinBox" name="Zoom">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -89,6 +99,9 @@
    <addaction name="actionBold"/>
    <addaction name="actionitalic"/>
    <addaction name="actioncolorepicker"/>
+   <addaction name="actionresizeing"/>
+   <addaction name="actionunderline"/>
+   <addaction name="actiontext_bg_colore"/>
   </widget>
   <action name="actionNew">
    <property name="text">
@@ -181,6 +194,21 @@
    </property>
    <property name="text">
     <string>colorepicker</string>
+   </property>
+  </action>
+  <action name="actionresizeing">
+   <property name="text">
+    <string>resizeing</string>
+   </property>
+  </action>
+  <action name="actionunderline">
+   <property name="text">
+    <string>underline</string>
+   </property>
+  </action>
+  <action name="actiontext_bg_colore">
+   <property name="text">
+    <string>text_bg_colore</string>
    </property>
   </action>
  </widget>
