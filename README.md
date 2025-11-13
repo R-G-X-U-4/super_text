@@ -185,7 +185,7 @@ We appreciate your interest in contributing to SuperText!
 
 ## License
 
-**Code:** This project's source code is provided under the **MIT License**.
+**Code:** This project's source code is provided under the **MIT License** read [License file](https://github.com/R-G-X-U-4/super_text/blob/main/LICENSE).
 
 **Software:** SuperText and its branding are provided under the [RGXU4 Software License Agreement](https://github.com/R-G-X-U-4/Super_text_releases/blob/main/License.md).
 
