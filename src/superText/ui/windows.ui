@@ -37,16 +37,6 @@
      <string>Auto Save</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="Zoom">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -197,16 +187,28 @@
    </property>
   </action>
   <action name="actionresizeing">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/Text_resizing_icon.svg</normaloff>icons/Text_resizing_icon.svg</iconset>
+   </property>
    <property name="text">
     <string>resizeing</string>
    </property>
   </action>
   <action name="actionunderline">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/underline_icon.svg</normaloff>icons/underline_icon.svg</iconset>
+   </property>
    <property name="text">
     <string>underline</string>
    </property>
   </action>
   <action name="actiontext_bg_colore">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/font-bg-colore-icon.svg</normaloff>icons/font-bg-colore-icon.svg</iconset>
+   </property>
    <property name="text">
     <string>text_bg_colore</string>
    </property>
