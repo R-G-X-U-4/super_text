@@ -63,6 +63,11 @@ class TextEditWindow(QMainWindow):
         # Set markdown parser for the text edit
         self.textEdit.set_markdown_parser(self.markdown_parser)
 
+        # Character counter: update status bar when text changes
+        self.textEdit.textChanged.connect(self.update_char_count)
+        # initialize counter
+        self.update_char_count()
+
         # Connect signals
         self.actionNew.triggered.connect(self.new_file)
         self.actionSave.triggered.connect(self.save_file)
@@ -245,6 +250,17 @@ class TextEditWindow(QMainWindow):
             cursor.mergeCharFormat(fmt)
 
         
+    def update_char_count(self):
+        """Update status bar with the current character count."""
+        try:
+            text = self.textEdit.toPlainText()
+        except Exception:
+            text = ''
+        count = len(text)
+        # show a concise message in the status bar
+        self.statusbar.showMessage(f"Characters: {count}")
+
 
 
         
+
