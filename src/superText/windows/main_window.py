@@ -5,28 +5,63 @@
 # This software is provided "as-is" without warranty.
 # ============================================================================
 
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QTextEdit
 from PyQt5.uic import loadUi
 from core.file_manager import FileManager
 from utils.message_helper import MessageBoxHelper
-from PyQt5.QtGui import QFont , QColor
+from utils.markdown_parser import MarkdownParser
+from PyQt5.QtGui import QFont , QColor, QKeySequence
 from PyQt5.QtWidgets import QColorDialog
+from PyQt5.QtCore import Qt
 import os
 
 # Get absolute path of UI file
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 UI_PATH = os.path.join(BASE_DIR, '..', 'ui', 'windows.ui')
 
+class MarkdownTextEdit(QTextEdit):
+    """Custom QTextEdit that processes markdown on Enter"""
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.markdown_parser = None
+    
+    def set_markdown_parser(self, parser):
+        """Set the markdown parser instance"""
+        self.markdown_parser = parser
+    
+    def keyPressEvent(self, event):
+        """Handle key press events"""
+        # Check if Enter or Return was pressed
+        if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+            if self.markdown_parser:
+                # Try to process markdown
+                if self.markdown_parser.process_markdown_line():
+                    return  # Markdown processed, don't insert newline
+        
+        # Call parent implementation for normal key handling
+        super().keyPressEvent(event)
+
 class TextEditWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi(UI_PATH, self)
 
+        # Replace the standard QTextEdit with our custom MarkdownTextEdit
+        old_text_edit = self.textEdit
+        self.textEdit = MarkdownTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(old_text_edit.geometry())
+        self.textEdit.setObjectName("textEdit")
+        old_text_edit.hide()
+        
         # Core logic objects
         self.file_manager = FileManager()
         self.current_file = None
         self.msg_helper = MessageBoxHelper()
         self.autosave_enabled = True
+        self.markdown_parser = MarkdownParser(self.textEdit)
+        
+        # Set markdown parser for the text edit
+        self.textEdit.set_markdown_parser(self.markdown_parser)
 
         # Connect signals
         self.actionNew.triggered.connect(self.new_file)
@@ -48,7 +83,7 @@ class TextEditWindow(QMainWindow):
         # Setup keyboard shortcuts for text resizing
         self.setup_resize_shortcuts()
 
-    # ---------------- File Actions ----------------
+    # -------- File Actions ----------------
     def new_file(self):
         if not self.textEdit.document().isEmpty():
             answer = self.msg_helper.ask_save_confirmation()
