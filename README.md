@@ -67,13 +67,13 @@ python -m pip install PyQt5
 ### Running the Application
 
 ```powershell
-cd C:\Users\shah\Desktop\scripts\super_text\src\superText
+cd path/to/your_dir/super-text
 python main.py
 ```
 
 Or, with your Python executable:
 ```powershell
-& C:/Users/shah/AppData/Local/Programs/Python/Python314/python.exe main.py
+& C:user/your_dir/AppData/Local/Programs/Python/Python314/python.exe main.py
 ```
 
 The SuperText window will open, ready for editing.
