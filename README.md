@@ -62,6 +62,8 @@ python -m pip install PyQt5
 
 ## Getting Started
 
+> **Note** This Guide is for developers who want to contribute to this project  or want to test the source code for users conside download and install the setup for easy installetion from [Releases](https://github.com/R-G-X-U-4/super_text/releases)
+
 ### Running the Application
 
 ```powershell
@@ -185,17 +187,15 @@ We appreciate your interest in contributing to SuperText!
 
 **Code:** This project's source code is provided under the **MIT License**.
 
-**Software:** SuperText and its branding are provided under the **RGXU4 Software License Agreement**.
+**Software:** SuperText and its branding are provided under the [RGXU4 Software License Agreement](https://github.com/R-G-X-U-4/Super_text_releases/blob/main/License.md).
 
-For full license text, see the license headers in source files or contact RGXU4 Corporation.
+For full license text, see the full license file above For software's  license checkout [RGXU4 SOFTWARE LICENSE TERMS](https://github.com/R-G-X-U-4/Super_text_releases/blob/main/License.md)
 
 ---
 
 ## Copyright
 
 © RGXU4 Corporation. All rights reserved.
-
-SuperText is provided "as-is" without warranty.
 
 ---
 
