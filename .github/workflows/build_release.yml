@@ -3,7 +3,7 @@ name: Build & Release Super Text
 on:
   push:
     tags:
-      - 'v*.*'  # Only run on tags like v1.0, v2.0, etc.
+      - 'v*.*'  # Runs only on version tags like v2.1, v2.2, etc.
 
 jobs:
   build:
@@ -52,7 +52,7 @@ jobs:
           draft: false
           prerelease: false
 
-      # 6️⃣ Upload binaries to release
+      # 6️⃣ Upload binaries to the release
       - name: Upload binaries to Release
         uses: softprops/action-gh-release@v1
         with:
