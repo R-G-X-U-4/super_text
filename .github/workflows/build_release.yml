@@ -28,23 +28,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyQt5 pyinstaller
 
-      # Step 4: Build the executable with PyInstaller
+      # Step 4: Build the executable with PyInstaller (cross-platform)
       - name: Build executable
         run: |
-          # Include the .ui file so PyInstaller bundles it
-          pyinstaller --onefile --add-data "src/superText/window.ui;." src/superText/main.py
-
-      # Step 5: Prepare artifact name
-      - name: Rename artifact for OS
-        run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            pyinstaller --onefile --add-data "src/superText/window.ui;." src/superText/main.py
             mv dist/main.exe dist/super_text-windows.exe
           else
+            pyinstaller --onefile --add-data "src/superText/window.ui:." src/superText/main.py
             mv dist/main dist/super_text-linux
             chmod +x dist/super_text-linux
           fi
 
-      # Step 6: Create GitHub Release
+      # Step 5: Create GitHub Release
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
@@ -54,7 +50,7 @@ jobs:
           draft: false
           prerelease: false
 
-      # Step 7: Upload binaries to the release
+      # Step 6: Upload binaries to the release
       - name: Upload to Release
         uses: softprops/action-gh-release@v1
         with:
