@@ -4,6 +4,9 @@ A lightweight, feature-rich text editor built with PyQt5, designed for writing d
 
 ---
 
+<img width="606" height="382" alt="super_text_" src="https://github.com/user-attachments/assets/3d26ef02-b6e9-4efd-a161-42664f18f2cd" />
+
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
