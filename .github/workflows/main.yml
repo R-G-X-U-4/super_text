@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     tags:
-      - 'v*.*'
+      - 'v*.*'  # Runs only on version tags like v2.1, v2.2, etc.
 
 jobs:
   build:
@@ -14,36 +14,42 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     steps:
+      # 1️⃣ Checkout repo
       - uses: actions/checkout@v3
 
+      # 2️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install PyQt5 pyinstaller
 
+      # 4️⃣ Build executable
       - name: Build executable
         run: |
           mkdir -p dist
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            pyinstaller --onefile --add-data "src/superText/window.ui;." src/superText/main.py
-            rename dist\main.exe dist\super_text-windows.exe
+            pyinstaller --onefile --add-data "src/superText/window.ui;superText" src/superText/main.py
+            move dist\main.exe dist\super_text-windows.exe
           else
-            pyinstaller --onefile --add-data "src/superText/window.ui:." src/superText/main.py
+            pyinstaller --onefile --add-data "src/superText/window.ui:superText" src/superText/main.py
             mv dist/main dist/super_text-linux
             chmod +x dist/super_text-linux
           fi
 
+      # 5️⃣ Upload artifact (always)
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: super_text-${{ matrix.os }}
           path: dist/*
 
+      # 6️⃣ Create GitHub Release (only on tags)
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
         id: create_release
@@ -54,7 +60,8 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload binaries to release
+      # 7️⃣ Upload binaries to the release (only on tags)
+      - name: Upload binaries to Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
