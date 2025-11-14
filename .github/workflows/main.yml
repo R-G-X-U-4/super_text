@@ -1,42 +1,63 @@
-name: Build Super Text
+name: Build & Release Super Text
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+      - 'v*.*'
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest, ubuntu-latest]
 
     steps:
-      # Step 1: Checkout the repository
       - uses: actions/checkout@v3
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install PyQt5 pyinstaller
 
-      # Step 4: Build the executable
       - name: Build executable
         run: |
-          pyinstaller --onefile src/superText/main.py
+          mkdir -p dist
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            pyinstaller --onefile --add-data "src/superText/window.ui;." src/superText/main.py
+            rename dist\main.exe dist\super_text-windows.exe
+          else
+            pyinstaller --onefile --add-data "src/superText/window.ui:." src/superText/main.py
+            mv dist/main dist/super_text-linux
+            chmod +x dist/super_text-linux
+          fi
 
-      # Step 5: Upload artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: super_text-${{ matrix.os }}
           path: dist/*
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Super Text Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload binaries to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
