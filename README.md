@@ -4,7 +4,11 @@ A lightweight, feature-rich text editor built with PyQt5, designed for writing d
 
 ---
 
-<img width="606" height="382" alt="super_text_" src="https://github.com/user-attachments/assets/3d26ef02-b6e9-4efd-a161-42664f18f2cd" />
+###  Screenshots
+
+<img width="606" alt="SuperText UI" src="https://github.com/user-attachments/assets/3d26ef02-b6e9-4efd-a161-42664f18f2cd" />
+
+<img width="1271" alt="SuperText Hello World Example" src="https://github.com/user-attachments/assets/23f95e6e-6f9f-456e-a3aa-c47896df4b4e" />
 
 
 ## Table of Contents
