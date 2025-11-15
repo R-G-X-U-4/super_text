@@ -34,10 +34,10 @@ jobs:
         shell: pwsh
         run: |
           pyinstaller --onefile `
-            --icon "src/superText/assets/logo.ico" `
-            --add-data "src/superText/ui/windows.ui;ui" `
-            --add-data "src/icons;icons" `
-            --add-data "src/superText/assets/logo.ico;assets" `
+            --icon=src/superText/assets/logo.ico `
+            --add-data=src/superText/ui/windows.ui;ui `
+            --add-data=src/icons;icons `
+            --add-data=src/superText/assets/logo.ico;assets `
             src/superText/main.py
 
           Rename-Item dist\main.exe super_text-windows.exe
@@ -49,10 +49,10 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           pyinstaller --onefile \
-            --icon "src/superText/assets/logo.ico" \
-            --add-data "src/superText/ui/windows.ui:ui" \
-            --add-data "src/icons:icons" \
-            --add-data "src/superText/assets/logo.ico:assets" \
+            --icon=src/superText/assets/logo.ico \
+            --add-data=src/superText/ui/windows.ui:ui \
+            --add-data=src/icons:icons \
+            --add-data=src/superText/assets/logo.ico:assets \
             src/superText/main.py
 
           mv dist/main dist/super_text-linux
@@ -68,7 +68,7 @@ jobs:
           path: dist/*
 
       # ================================
-      # CREATE RELEASE (TAG ONLY)
+      # CREATE RELEASE
       # ================================
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
