@@ -205,8 +205,7 @@ For full license text, see the full license file above For software's  license c
 © RGXU4 Corporation. All rights reserved.
 
 
-THE LOGO AND NAME OF RGXU4 ARE ALL OWNED BY YAHYA MOKHLIS YOU MAY NOT USE NAME AND LOGO OF RGXU4 FOR COMMERCIAL USE
-
+The logo and name of RGXU4 are the exclusive property of the RGXU4 team. Use of the RGXU4 name or logo for commercial purposes is strictly prohibited without prior written permission.
 ---
 
 ## Support & Contact
